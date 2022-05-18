@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConcatComponent } from './components/concat/concat.component';
 import { BlockComponent } from './components/block/block.component';
+import { CoreModule } from './modules/core/core.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,8 +15,10 @@ import { BlockComponent } from './components/block/block.component';
     BlockComponent
   ],
   imports: [
+    CoreModule,
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
