@@ -1,0 +1,6 @@
+<div class="block-list">
+  <p class="block-list__title">{{title}}</p>
+  <ng-container *ngFor="let block of blocks">
+    <app-block [block]="block"></app-block>
+  </ng-container>
+</div>

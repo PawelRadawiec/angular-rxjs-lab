@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="header">
+    <p class="header__title">{{ block?.text }}</p>
+  </div>
+
+  <p>{{ block?.value }}</p>
+  <p
+    class="status"
+    [ngClass]="
+      block?.status === 'PENDING' ? 'status--pending' : 'status--executed'
+    "
+  >
+    {{ block?.status }}
+  </p>
+  <p>Deley: {{ block?.deley / 1000 }}</p>
+  <p *ngIf="block?.startAt as startAt">
+    Start at: {{ startAt | date: "mediumTime" }}
+  </p>
+  <p *ngIf="block?.endAt as endAt; else empty">
+    End {{ endAt | date: "mediumTime" }}
+  </p>
+  <ng-template #empty>
+    <p>-</p>
+  </ng-template>
+</div>

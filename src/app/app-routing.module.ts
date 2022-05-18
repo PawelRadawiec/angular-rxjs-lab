@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConcatComponent } from './components/concat/concat.component';
 
-const routes: Routes = [
-  {
-    path: 'concat',
-    component: ConcatComponent,
-  }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
