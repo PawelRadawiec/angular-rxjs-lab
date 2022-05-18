@@ -1,18 +1,18 @@
-<h3>Concat combination example</h3>
-<button (click)="start()">Start</button>
-<button (click)="reset()">Reset</button>
 <div class="container">
-  <div class="block-list">
-    <p>Pending orders</p>
-    <ng-container *ngFor="let block of pendingBlocks">
-      <app-block [block]="block"></app-block>
-    </ng-container>
+  <h3 class="header">Concat combination</h3>
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="start()">Start</button>
+    <button mat-flat-button color="primary" (click)="reset()">Reset</button>
   </div>
 
-  <div class="block-list">
-    <p>Executed orders</p>
-    <ng-container *ngFor="let block of executedBlocks">
-      <app-block [block]="block"></app-block>
-    </ng-container>
+  <div class="content">
+    <app-block-list
+      [blocks]="pendingBlocks"
+      [title]="'Pending orders'"
+    ></app-block-list>
+    <app-block-list
+      [blocks]="executedBlocks"
+      [title]="'Executed orders'"
+    ></app-block-list>
   </div>
 </div>

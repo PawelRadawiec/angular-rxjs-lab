@@ -1,10 +1,23 @@
 .container {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.block-list {
+.header {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.buttons {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 54px;
+  margin-bottom: 24px;
+}
+
+.content {
+  display: flex;
+  gap: 24px;
+  width: 500px;
 }

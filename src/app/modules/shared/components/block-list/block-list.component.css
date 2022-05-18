@@ -1,0 +1,10 @@
+.block-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.block-list__title {
+  font-size: 18px;
+  font-weight: bold;
+}
