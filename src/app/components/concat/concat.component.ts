@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { concat, delay, map, merge, of, Subject, tap } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { concat, delay, map, of, Subject, takeUntil } from 'rxjs';
 import { BlockData, BlockStatus } from '../block/block.component';
 
 @Component({
@@ -7,19 +7,28 @@ import { BlockData, BlockStatus } from '../block/block.component';
   templateUrl: './concat.component.html',
   styleUrls: ['./concat.component.css'],
 })
-export class ConcatComponent implements OnInit {
+export class ConcatComponent implements OnDestroy {
   value = 1;
-  subject = new Subject<BlockData>();
-
   pendingBlocks: BlockData[] = [];
   executedBlocks: BlockData[] = [];
 
+  destory$ = new Subject();
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnDestroy(): void {
+    this.destory$.next({});
+  }
 
   start() {
     this.useConcat();
+  }
+
+  reset() {
+    this.value = 1;
+    this.pendingBlocks = [];
+    this.executedBlocks = [];
+    this.destory$.next({});
   }
 
   useConcat() {
@@ -27,13 +36,15 @@ export class ConcatComponent implements OnInit {
       this.getData('Order 1', 2_000),
       this.getData('Order 2', 4_000),
       this.getData('Order 3', 6_000)
-    ).subscribe((block) => {
-      this.executedBlocks.push({
-        ...block,
-        status: BlockStatus.EXECUTED,
-        endAt: new Date(),
+    )
+      .pipe(takeUntil(this.destory$))
+      .subscribe((block) => {
+        this.executedBlocks.push({
+          ...block,
+          status: BlockStatus.EXECUTED,
+          endAt: new Date(),
+        });
       });
-    });
   }
 
   getData(text: string, deley: number) {
