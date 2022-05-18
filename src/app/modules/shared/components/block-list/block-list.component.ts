@@ -9,6 +9,7 @@ import { BlockData } from '../block/block.component';
 export class BlockListComponent implements OnInit {
   @Input() blocks: BlockData[];
   @Input() title: string;
+  @Input() horizontal = true;
 
   constructor() {}
 

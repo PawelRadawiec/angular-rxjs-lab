@@ -1,5 +1,8 @@
-<div class="block-list">
-  <p class="block-list__title">{{title}}</p>
+<div
+  class="block-list"
+  [ngClass]="horizontal ? 'block-list--horizontal' : 'block-list--vertical'"
+>
+  <p class="block-list__title">{{ title }}</p>
   <ng-container *ngFor="let block of blocks">
     <app-block [block]="block"></app-block>
   </ng-container>

@@ -6,10 +6,10 @@ export enum BlockStatus {
 }
 
 export interface BlockData {
-  text: string;
-  value: number;
-  status: BlockStatus;
-  deley: number;
+  text?: string;
+  value?: number | string;
+  status?: BlockStatus;
+  deley?: number;
   startAt?: any;
   endAt?: any;
 }
