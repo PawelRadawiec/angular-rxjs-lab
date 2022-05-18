@@ -1,6 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { concat, delay, map, of, Subject, takeUntil } from 'rxjs';
-import { BlockData, BlockStatus } from '../block/block.component';
+import {
+  BlockData,
+  BlockStatus,
+} from '../../../shared/components/block/block.component';
 
 @Component({
   selector: 'app-concat',
