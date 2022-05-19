@@ -13,7 +13,7 @@ import { BlockComponent } from 'src/app/modules/shared/components/block/block.co
 
 import { CombineLatestComponent } from './combine-latest.component';
 
-fdescribe('CombineLatestComponent', () => {
+describe('CombineLatestComponent', () => {
   let component: CombineLatestComponent;
   let fixture: ComponentFixture<CombineLatestComponent>;
   let el: DebugElement;
@@ -76,6 +76,4 @@ fdescribe('CombineLatestComponent', () => {
 
     expect(component?.showHistory).toBe(true);
   }));
-
-
 });
