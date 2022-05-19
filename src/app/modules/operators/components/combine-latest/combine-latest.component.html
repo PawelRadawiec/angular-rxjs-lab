@@ -1,0 +1,38 @@
+<div class="container">
+  <h3 class="header">Combine latest</h3>
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="add(1)">
+      First Product
+    </button>
+    <button mat-flat-button color="primary" (click)="add(2)">
+      Second Product
+    </button>
+    <button mat-flat-button color="primary" (click)="add(3)">
+      Third Product
+    </button>
+    <button mat-stroked-button color="primary" (click)="toggleShowHistory()">
+      Show history
+    </button>
+  </div>
+
+  <div class="content">
+    <app-block-list
+      [title]="'Pending Results'"
+      [horizontal]="false"
+      [blocks]="pendingResults"
+    ></app-block-list>
+
+    <app-block-list
+      *ngIf="!showHistory; else history"
+      [title]="'Executed products'"
+      [horizontal]="false"
+      [blocks]="results"
+    ></app-block-list>
+
+    <ng-template #history>
+      <ng-container *ngFor="let blocks of resultsHistory">
+        <app-block-list [horizontal]="false" [blocks]="blocks"></app-block-list>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>

@@ -11,22 +11,8 @@
   <button mat-button [matMenuTriggerFor]="afterMenu">Combination</button>
   <mat-menu #afterMenu="matMenu" xPosition="after">
     <button mat-menu-item [routerLink]="'/operators/concat'">Concat</button>
-    <button mat-menu-item>Merge</button>
+    <button mat-menu-item [routerLink]="'/operators/combine-latest'">
+      Combine latest
+    </button>
   </mat-menu>
-
-  <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
 </mat-toolbar>

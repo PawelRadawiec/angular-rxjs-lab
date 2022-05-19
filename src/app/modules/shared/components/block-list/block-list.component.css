@@ -1,7 +1,19 @@
-.block-list {
+.container {
   display: flex;
   flex-direction: column;
+}
+
+.block-list {
+  display: flex;
   gap: 10px;
+}
+
+.block-list--horizontal {
+  flex-direction: column;
+}
+
+.block-list--vertical {
+  flex-direction: row;
 }
 
 .block-list__title {
