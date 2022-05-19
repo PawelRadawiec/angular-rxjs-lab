@@ -6,6 +6,7 @@ export enum BlockStatus {
 }
 
 export interface BlockData {
+  id?: string;
   text?: string;
   value?: number | string;
   status?: BlockStatus;

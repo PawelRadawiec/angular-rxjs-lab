@@ -13,6 +13,13 @@
   </div>
 
   <div class="content">
+    <p>Pending Results</p>
+    <app-block-list
+      [horizontal]="false"
+      [blocks]="pendingResults"
+    ></app-block-list>
+
+    <p>Executed products</p>
     <ng-container *ngFor="let blocks of results">
       <app-block-list [horizontal]="false" [blocks]="blocks"></app-block-list>
     </ng-container>
