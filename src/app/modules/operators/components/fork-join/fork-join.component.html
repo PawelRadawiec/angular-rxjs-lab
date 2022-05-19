@@ -1,0 +1,47 @@
+<div class="container">
+  <h3 class="header">Fork join</h3>
+  <div class="buttons">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="forkJoinHelper.emitFirst()"
+    >
+      First Product
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="forkJoinHelper.emitSecond()"
+    >
+      Second Product
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="forkJoinHelper.emitThird()"
+    >
+      Third Product
+    </button>
+  </div>
+
+  <div class="content">
+    <app-block-list
+      [title]="'Pending Results'"
+      [horizontal]="false"
+      [blocks]="forkJoinHelper.pendingResults"
+    ></app-block-list>
+
+    <app-block-list
+      *ngIf="!showHistory; else history"
+      [title]="'Executed products'"
+      [horizontal]="false"
+      [blocks]="results"
+    ></app-block-list>
+
+    <ng-template #history>
+      <ng-container *ngFor="let blocks of resultsHistory">
+        <app-block-list [horizontal]="false" [blocks]="blocks"></app-block-list>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>
