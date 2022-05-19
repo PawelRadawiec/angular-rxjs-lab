@@ -28,7 +28,10 @@ export class CombineLatestComponent implements OnInit, OnDestroy {
   value1 = 1;
   value2 = 1;
   value3 = 1;
-  results: BlockData[][] = [];
+  showHistory = false;
+
+  results: BlockData[] = [];
+  resultsHistory: BlockData[][] = [];
   pendingResults: BlockData[] = [];
 
   constructor() {}
@@ -82,7 +85,8 @@ export class CombineLatestComponent implements OnInit, OnDestroy {
     ])
       .pipe(takeUntil(this._destroy))
       .subscribe((values) => {
-        this.results.push(values);
+        this.results = values;
+        this.resultsHistory.push(values);
         values.forEach((block) => {
           this.pendingResults = this.pendingResults.filter(
             (item) => item.id !== block.id
@@ -124,5 +128,9 @@ export class CombineLatestComponent implements OnInit, OnDestroy {
         return { ...block, status: BlockStatus.EXECUTED, endAt: new Date() };
       })
     );
+  }
+
+  toggleShowHistory() {
+    this.showHistory = !this.showHistory;
   }
 }
