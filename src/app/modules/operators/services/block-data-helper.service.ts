@@ -7,7 +7,7 @@ import {
 import * as uuid from 'uuid';
 
 @Injectable()
-export class ForkJoinHelperService {
+export class BlockDataHelperService {
   private _value1 = 1;
   private _value2 = 1;
   private _value3 = 1;

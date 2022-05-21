@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BlockStatus } from 'src/app/modules/shared/components/block/block.component';
-import { ForkJoinHelperService } from '../../services/fork-join-helper.service';
+import { BlockDataHelperService } from '../../services/block-data-helper.service';
 
 import { ForkJoinComponent } from './fork-join.component';
 
@@ -19,7 +19,7 @@ fdescribe('ForkJoinComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ForkJoinComponent],
-      providers: [ForkJoinHelperService],
+      providers: [BlockDataHelperService],
     })
       .compileComponents()
       .then(() => {

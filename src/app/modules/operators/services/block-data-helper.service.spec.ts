@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ForkJoinHelperService } from './fork-join-helper.service';
+import { BlockDataHelperService } from './block-data-helper.service';
 
 describe('ForkJoinHelperService', () => {
-  let service: ForkJoinHelperService;
+  let service: BlockDataHelperService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ForkJoinHelperService);
+    service = TestBed.inject(BlockDataHelperService);
   });
 
   it('should be created', () => {

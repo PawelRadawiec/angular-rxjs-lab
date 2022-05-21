@@ -7,7 +7,7 @@ import { OperatorsComponent } from './components/operators/operators.component';
 import { ConcatComponent } from './components/concat/concat.component';
 import { CombineLatestComponent } from './components/combine-latest/combine-latest.component';
 import { ForkJoinComponent } from './components/fork-join/fork-join.component';
-import { ForkJoinHelperService } from './services/fork-join-helper.service';
+import { BlockDataHelperService } from './services/block-data-helper.service';
 import { WithLatestFromComponent } from './components/with-latest-from/with-latest-from.component';
 
 @NgModule({
@@ -20,6 +20,6 @@ import { WithLatestFromComponent } from './components/with-latest-from/with-late
   ],
   imports: [CommonModule, OperatorsRoutingModule, SharedModule],
   exports: [OperatorsComponent, ConcatComponent],
-  providers: [ForkJoinHelperService],
+  providers: [BlockDataHelperService],
 })
 export class OperatorsModule {}

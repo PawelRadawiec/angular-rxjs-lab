@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { delay, forkJoin, map, Subject, takeUntil, tap } from 'rxjs';
 import { BlockData } from 'src/app/modules/shared/components/block/block.component';
-import { ForkJoinHelperService } from '../../services/fork-join-helper.service';
+import { BlockDataHelperService } from '../../services/block-data-helper.service';
 
 @Component({
   selector: 'app-fork-join',
@@ -14,7 +14,7 @@ export class ForkJoinComponent implements OnInit, OnDestroy {
   resultsHistory: BlockData[][] = [];
   private _destroy = new Subject<boolean>();
 
-  constructor(public forkJoinHelper: ForkJoinHelperService) {}
+  constructor(public forkJoinHelper: BlockDataHelperService) {}
 
   ngOnInit() {
     this.startForkJoin();

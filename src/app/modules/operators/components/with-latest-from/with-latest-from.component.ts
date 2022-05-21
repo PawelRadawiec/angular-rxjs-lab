@@ -9,13 +9,13 @@ import {
   withLatestFrom,
 } from 'rxjs';
 import { BlockData } from 'src/app/modules/shared/components/block/block.component';
-import { ForkJoinHelperService } from '../../services/fork-join-helper.service';
+import { BlockDataHelperService } from '../../services/block-data-helper.service';
 
 @Component({
   selector: 'app-with-latest-from',
   templateUrl: './with-latest-from.component.html',
   styleUrls: ['./with-latest-from.component.css'],
-  providers: [ForkJoinHelperService],
+  providers: [BlockDataHelperService],
 })
 export class WithLatestFromComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject<boolean>();
@@ -27,7 +27,7 @@ export class WithLatestFromComponent implements OnInit, OnDestroy {
   resultsHistory: BlockData[][] = [];
   results: BlockData[] = [];
 
-  constructor(public productService: ForkJoinHelperService) {}
+  constructor(public productService: BlockDataHelperService) {}
 
   ngOnInit() {
     this.startWithLatestFrom();
