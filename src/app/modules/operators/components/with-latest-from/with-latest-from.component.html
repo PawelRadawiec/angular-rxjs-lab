@@ -1,31 +1,5 @@
 <div class="container">
-  <h3 class="header">withLatestFrom</h3>
-
-  <app-info-box [info]="info"></app-info-box>
-
-  <div class="buttons">
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="productService.emitFirst()"
-    >
-      Source
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="productService.emitSecond()"
-    >
-      Inner
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="showHistory = !showHistory"
-    >
-      Show history
-    </button>
-  </div>
+  <app-operators-header [config]="config"></app-operators-header>
 
   <div class="content">
     <app-block-list

@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { BlockData } from 'src/app/modules/shared/components/block/block.component';
 import { BlockDataHelperService } from '../../services/block-data-helper.service';
+import { OperatorsHeaderConfig } from '../operators-header/operators-header.component';
 
 @Component({
   selector: 'app-with-latest-from',
@@ -23,6 +24,24 @@ export class WithLatestFromComponent implements OnInit, OnDestroy {
   info =
     'Combines the source Observable with other Observables to create an Observable whose values are calculated from the latest values of each, only when the source emits.';
 
+  config: OperatorsHeaderConfig = {
+    info: this.info,
+    title: 'withLatestFrom',
+    buttons: [
+      {
+        name: 'Source',
+        callback: () => {
+          this.productService.emitFirst();
+        },
+      },
+      {
+        name: 'Inner',
+        callback: () => {
+          this.productService.emitSecond();
+        },
+      },
+    ],
+  };
   showHistory = false;
   resultsHistory: BlockData[][] = [];
   results: BlockData[] = [];

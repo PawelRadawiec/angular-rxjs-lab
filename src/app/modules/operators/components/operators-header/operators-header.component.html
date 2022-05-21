@@ -1,0 +1,13 @@
+<div class="container">
+  <h3 class="header">{{ config?.title }}</h3>
+
+  <app-info-box [info]="config?.info"></app-info-box>
+
+  <div class="buttons">
+    <ng-container *ngFor="let button of config?.buttons">
+      <button mat-flat-button color="primary" (click)="handleClick(button)">
+        {{ button.name }}
+      </button>
+    </ng-container>
+  </div>
+</div>
