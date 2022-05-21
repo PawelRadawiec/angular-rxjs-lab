@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: 24px;
+
+  border: 4px solid #748ffc;
+  padding: 12px 36px;
+  width: 450px;
+  border-radius: 25px;
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.info-icon {
+  color: #748ffc;
+  align-self: center;
+  transform: scale(2);
+}
