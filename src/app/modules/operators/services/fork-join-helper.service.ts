@@ -62,28 +62,28 @@ export class ForkJoinHelperService {
     });
   }
 
-  firstProductObservable() {
+  firstProductObservable(setTake?: number) {
     return this._firstProduct.asObservable().pipe(
       tap((block) => this.appendPendingResults(block)),
       delay(2_000),
       map((block) => this.changeBlockData(block)),
-      take(1)
+      setTake ? take(setTake) : tap()
     );
   }
-  secondProductObservable() {
+  secondProductObservable(setTake?: number) {
     return this._secondProduct.asObservable().pipe(
       tap((block) => this.appendPendingResults(block)),
       delay(3_000),
       map((block) => this.changeBlockData(block)),
-      take(1)
+      setTake ? take(setTake) : tap()
     );
   }
-  thirdProductObservable() {
+  thirdProductObservable(setTake?: number) {
     return this._thirdProduct.asObservable().pipe(
       tap((block) => this.appendPendingResults(block)),
       delay(5_000),
       map((block) => this.changeBlockData(block)),
-      take(1)
+      setTake ? take(setTake) : tap()
     );
   }
 }

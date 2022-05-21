@@ -22,9 +22,9 @@ export class ForkJoinComponent implements OnInit, OnDestroy {
 
   startForkJoin() {
     forkJoin([
-      this.forkJoinHelper.firstProductObservable(),
-      this.forkJoinHelper.secondProductObservable(),
-      this.forkJoinHelper.thirdProductObservable(),
+      this.forkJoinHelper.firstProductObservable(1),
+      this.forkJoinHelper.secondProductObservable(1),
+      this.forkJoinHelper.thirdProductObservable(1),
     ])
       .pipe(takeUntil(this._destroy))
       .subscribe((products) => {
