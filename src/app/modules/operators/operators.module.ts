@@ -8,6 +8,7 @@ import { ConcatComponent } from './components/concat/concat.component';
 import { CombineLatestComponent } from './components/combine-latest/combine-latest.component';
 import { ForkJoinComponent } from './components/fork-join/fork-join.component';
 import { ForkJoinHelperService } from './services/fork-join-helper.service';
+import { WithLatestFromComponent } from './components/with-latest-from/with-latest-from.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ForkJoinHelperService } from './services/fork-join-helper.service';
     ConcatComponent,
     CombineLatestComponent,
     ForkJoinComponent,
+    WithLatestFromComponent,
   ],
   imports: [CommonModule, OperatorsRoutingModule, SharedModule],
   exports: [OperatorsComponent, ConcatComponent],

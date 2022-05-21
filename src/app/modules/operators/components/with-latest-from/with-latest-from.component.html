@@ -1,0 +1,50 @@
+<div class="container">
+  <h3 class="header">withLatestFrom</h3>
+
+  <app-info-box [info]="info"></app-info-box>
+
+  <div class="buttons">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="productService.emitFirst()"
+    >
+      Source
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="productService.emitSecond()"
+    >
+      Inner
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="showHistory = !showHistory"
+    >
+      Show history
+    </button>
+  </div>
+
+  <div class="content">
+    <app-block-list
+      [title]="'Pending Results'"
+      [horizontal]="false"
+      [blocks]="productService.pendingResults"
+    ></app-block-list>
+
+    <app-block-list
+      *ngIf="!showHistory; else history"
+      [title]="'Executed products'"
+      [horizontal]="false"
+      [blocks]="results"
+    ></app-block-list>
+
+    <ng-template #history>
+      <ng-container *ngFor="let blocks of resultsHistory">
+        <app-block-list [horizontal]="false" [blocks]="blocks"></app-block-list>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>

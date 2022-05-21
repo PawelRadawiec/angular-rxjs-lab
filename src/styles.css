@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
 
 html,
 body {
@@ -16,4 +17,5 @@ p {
 
 .mat-typography p {
   margin: 0;
+  font-weight: 700;
 }
