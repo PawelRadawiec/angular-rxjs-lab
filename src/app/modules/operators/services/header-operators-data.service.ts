@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { OperatorsHeaderConfig } from '../components/operators-header/operators-header.component';
 import { BlockDataHelperService } from './block-data-helper.service';
 
 export enum OperatorRouterNames {
@@ -14,6 +15,8 @@ export class HeaderOperatorsDataService {
     switch (name) {
       case OperatorRouterNames.WITH_LATEST_FROM:
         return this.withLatestFromConfig();
+      case OperatorRouterNames.FORK_JOIN:
+        return this.forkJoinConfig();
       default:
         return null;
     }
@@ -36,7 +39,33 @@ export class HeaderOperatorsDataService {
             this.productService.emitSecond();
           },
         },
-    
+      ],
+    };
+  }
+
+  private forkJoinConfig(): OperatorsHeaderConfig {
+    return {
+      info: 'This operator is best used when you have a group of observables and only care about the final emitted value of each. One common use case for this is if you wish to issue multiple requests on page load (or some other event) and only want to take action when a response has been received for all.',
+      title: 'forkJoin',
+      buttons: [
+        {
+          name: 'Product 1',
+          callback: () => {
+            this.productService.emitFirst();
+          },
+        },
+        {
+          name: 'Product 2',
+          callback: () => {
+            this.productService.emitSecond();
+          },
+        },
+        {
+          name: 'Product 3',
+          callback: () => {
+            this.productService.emitThird();
+          },
+        },
       ],
     };
   }

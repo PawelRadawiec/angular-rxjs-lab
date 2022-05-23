@@ -16,13 +16,21 @@ import {
 } from '../../services/header-operators-data.service';
 import { OperatorsHeaderConfig } from '../operators-header/operators-header.component';
 
+export interface OperatorsConfig {
+  config: OperatorsHeaderConfig;
+  start: () => void;
+  setConfig: () => void;
+}
+
 @Component({
   selector: 'app-with-latest-from',
   templateUrl: './with-latest-from.component.html',
   styleUrls: ['./with-latest-from.component.css'],
   providers: [BlockDataHelperService, HeaderOperatorsDataService],
 })
-export class WithLatestFromComponent implements OnInit, OnDestroy {
+export class WithLatestFromComponent
+  implements OnInit, OnDestroy, OperatorsConfig
+{
   config: OperatorsHeaderConfig;
   showHistory = false;
   resultsHistory: BlockData[][] = [];
