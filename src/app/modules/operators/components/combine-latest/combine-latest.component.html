@@ -1,25 +1,11 @@
 <div class="container">
-  <h3 class="header">Combine latest</h3>
-  <div class="buttons">
-    <button mat-flat-button color="primary" (click)="add(1)">
-      First Product
-    </button>
-    <button mat-flat-button color="primary" (click)="add(2)">
-      Second Product
-    </button>
-    <button mat-flat-button color="primary" (click)="add(3)">
-      Third Product
-    </button>
-    <button mat-stroked-button color="primary" (click)="toggleShowHistory()">
-      Show history
-    </button>
-  </div>
+  <app-operators-header [config]="config"></app-operators-header>
 
   <div class="content">
     <app-block-list
       [title]="'Pending Results'"
       [horizontal]="false"
-      [blocks]="pendingResults"
+      [blocks]="blockDataHelper?.pendingResults"
     ></app-block-list>
 
     <app-block-list

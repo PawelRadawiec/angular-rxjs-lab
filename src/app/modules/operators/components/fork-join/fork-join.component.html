@@ -1,34 +1,11 @@
 <div class="container">
-  <h3 class="header">Fork join</h3>
-  <div class="buttons">
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="forkJoinHelper.emitFirst()"
-    >
-      First Product
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="forkJoinHelper.emitSecond()"
-    >
-      Second Product
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="forkJoinHelper.emitThird()"
-    >
-      Third Product
-    </button>
-  </div>
+  <app-operators-header [config]="config"></app-operators-header>
 
   <div class="content">
     <app-block-list
       [title]="'Pending Results'"
       [horizontal]="false"
-      [blocks]="forkJoinHelper.pendingResults"
+      [blocks]="blockDataHelper.pendingResults"
     ></app-block-list>
 
     <app-block-list

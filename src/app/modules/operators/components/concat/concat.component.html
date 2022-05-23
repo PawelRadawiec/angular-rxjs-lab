@@ -1,9 +1,5 @@
 <div class="container">
-  <h3 class="header">Concat combination</h3>
-  <div class="buttons">
-    <button mat-flat-button color="primary" (click)="start()">Start</button>
-    <button mat-flat-button color="primary" (click)="reset()">Reset</button>
-  </div>
+  <app-operators-header [config]="config"></app-operators-header>
 
   <div class="content">
     <app-block-list

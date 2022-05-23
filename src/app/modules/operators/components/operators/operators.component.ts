@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-operators',
   templateUrl: './operators.component.html',
-  styleUrls: ['./operators.component.css']
+  styleUrls: ['./operators.component.css'],
 })
-export class OperatorsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class OperatorsComponent {
+  constructor() {}
 }
