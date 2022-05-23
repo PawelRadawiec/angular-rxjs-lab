@@ -10,6 +10,7 @@ import { ForkJoinComponent } from './components/fork-join/fork-join.component';
 import { BlockDataHelperService } from './services/block-data-helper.service';
 import { WithLatestFromComponent } from './components/with-latest-from/with-latest-from.component';
 import { OperatorsHeaderComponent } from './components/operators-header/operators-header.component';
+import { ZipComponent } from './components/zip/zip.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { OperatorsHeaderComponent } from './components/operators-header/operator
     ForkJoinComponent,
     WithLatestFromComponent,
     OperatorsHeaderComponent,
+    ZipComponent,
   ],
   imports: [CommonModule, OperatorsRoutingModule, SharedModule],
   exports: [OperatorsComponent, ConcatComponent],

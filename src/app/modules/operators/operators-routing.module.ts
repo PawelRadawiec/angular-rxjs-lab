@@ -5,6 +5,7 @@ import { CombineLatestComponent } from './components/combine-latest/combine-late
 import { ForkJoinComponent } from './components/fork-join/fork-join.component';
 import { OperatorsComponent } from './components/operators/operators.component';
 import { WithLatestFromComponent } from './components/with-latest-from/with-latest-from.component';
+import { ZipComponent } from './components/zip/zip.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'with-latest-from',
         component: WithLatestFromComponent,
+      },
+      {
+        path: 'zip',
+        component: ZipComponent,
       },
     ],
   },

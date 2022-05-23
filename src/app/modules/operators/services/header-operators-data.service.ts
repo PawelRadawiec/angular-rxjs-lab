@@ -7,6 +7,7 @@ export enum OperatorRouterNames {
   WITH_LATEST_FROM = '/operators/with-latest-from',
   CONCAT = 'CONCAT',
   COMBINE_LATEST = 'COMBINE_LATEST',
+  ZIP = 'ZIP',
 }
 
 @Injectable()
@@ -23,6 +24,8 @@ export class HeaderOperatorsDataService {
         return this.concatConfig();
       case OperatorRouterNames.COMBINE_LATEST:
         return this.combineLatestConfig();
+      case OperatorRouterNames.ZIP:
+        return this.zipConfig();
       default:
         return null;
     }
@@ -88,6 +91,33 @@ export class HeaderOperatorsDataService {
     return {
       info: 'This operator is best used when you have multiple, long-lived observables that rely on each other for some calculation or determination. Basic examples of this can be seen in example three, where events from multiple buttons are being combined to produce a count of each and an overall total, or a calculation of BMI from the RxJS documentation.',
       title: 'combineLatest',
+      buttons: [
+        {
+          name: 'Product 1',
+          callback: () => {
+            this.productService.emitFirst();
+          },
+        },
+        {
+          name: 'Product 2',
+          callback: () => {
+            this.productService.emitSecond();
+          },
+        },
+        {
+          name: 'Product 3',
+          callback: () => {
+            this.productService.emitThird();
+          },
+        },
+      ],
+    };
+  }
+
+  private zipConfig(): OperatorsHeaderConfig {
+    return {
+      info: 'zip operator combines observable streams in a way that resembles the mechanics of a zipper on clothing or a bag',
+      title: 'zip',
       buttons: [
         {
           name: 'Product 1',

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject, tap, delay, map, take } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subject, tap, delay, map, take, takeUntil, zip } from 'rxjs';
 import {
   BlockData,
   BlockStatus,
@@ -7,17 +7,24 @@ import {
 import * as uuid from 'uuid';
 
 @Injectable()
-export class BlockDataHelperService {
+export class BlockDataHelperService implements OnDestroy {
   private _value1 = 1;
   private _value2 = 1;
   private _value3 = 1;
   private _firstProduct = new Subject<BlockData>();
   private _secondProduct = new Subject<BlockData>();
   private _thirdProduct = new Subject<BlockData>();
+  private _destroy$ = new Subject<boolean>();
 
+  results: BlockData[] = [];
+  resultsHistory: BlockData[][] = [];
   pendingResults: BlockData[] = [];
 
   constructor() {}
+
+  ngOnDestroy() {
+    this._destroy$.next(true);
+  }
 
   appendPendingResults(block: BlockData) {
     this.pendingResults.push(block);
@@ -85,5 +92,23 @@ export class BlockDataHelperService {
       map((block) => this.changeBlockData(block)),
       setTake ? take(setTake) : tap()
     );
+  }
+
+  startZip() {
+    zip(
+      this.firstProductObservable(),
+      this.secondProductObservable(),
+      this.thirdProductObservable()
+    )
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((values) => {
+        this.results = values;
+        this.resultsHistory.push(values);
+        values.forEach((block) => {
+          this.pendingResults = this.pendingResults.filter(
+            (item) => item.id !== block.id
+          );
+        });
+      });
   }
 }

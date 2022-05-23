@@ -1,0 +1,24 @@
+<div class="container">
+  <app-operators-header [config]="config"></app-operators-header>
+
+  <div class="content">
+    <app-block-list
+      [title]="'Pending Results'"
+      [horizontal]="false"
+      [blocks]="blockDataHelper?.pendingResults"
+    ></app-block-list>
+
+    <app-block-list
+      *ngIf="!showHistory; else history"
+      [title]="'Executed products'"
+      [horizontal]="false"
+      [blocks]="blockDataHelper?.results"
+    ></app-block-list>
+
+    <ng-template #history>
+      <ng-container *ngFor="let blocks of blockDataHelper?.resultsHistory">
+        <app-block-list [horizontal]="false" [blocks]="blocks"></app-block-list>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>
