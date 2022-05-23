@@ -5,6 +5,7 @@ import { BlockDataHelperService } from './block-data-helper.service';
 export enum OperatorRouterNames {
   FORK_JOIN = '/operators/fork-join',
   WITH_LATEST_FROM = '/operators/with-latest-from',
+  CONCAT = 'CONCAT',
 }
 
 @Injectable()
@@ -17,12 +18,14 @@ export class HeaderOperatorsDataService {
         return this.withLatestFromConfig();
       case OperatorRouterNames.FORK_JOIN:
         return this.forkJoinConfig();
+      case OperatorRouterNames.CONCAT:
+        return this.concatConfig();
       default:
         return null;
     }
   }
 
-  private withLatestFromConfig() {
+  private withLatestFromConfig(): OperatorsHeaderConfig {
     return {
       info: 'Combines the source Observable with other Observables to create an Observable whose values are calculated from the latest values of each, only when the source emits.',
       title: 'withLatestFrom',
@@ -67,6 +70,14 @@ export class HeaderOperatorsDataService {
           },
         },
       ],
+    };
+  }
+
+  private concatConfig(): OperatorsHeaderConfig {
+    return {
+      info: 'You can think of concat like a line at a ATM, the next transaction (subscription) cannot start until the previous completes!',
+      title: 'concat',
+      buttons: [],
     };
   }
 }

@@ -1,23 +1,39 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { concat, delay, map, of, Subject, takeUntil } from 'rxjs';
 import {
   BlockData,
   BlockStatus,
 } from '../../../shared/components/block/block.component';
+import { BlockDataHelperService } from '../../services/block-data-helper.service';
+import {
+  HeaderOperatorsDataService,
+  OperatorRouterNames,
+} from '../../services/header-operators-data.service';
+import { OperatorsHeaderConfig } from '../operators-header/operators-header.component';
+import { OperatorsConfig } from '../with-latest-from/with-latest-from.component';
 
 @Component({
   selector: 'app-concat',
   templateUrl: './concat.component.html',
   styleUrls: ['./concat.component.css'],
+  providers: [BlockDataHelperService, HeaderOperatorsDataService],
 })
-export class ConcatComponent implements OnDestroy {
+export class ConcatComponent implements OnInit, OnDestroy, OperatorsConfig {
+  config: OperatorsHeaderConfig;
   value = 1;
   pendingBlocks: BlockData[] = [];
   executedBlocks: BlockData[] = [];
 
   destory$ = new Subject();
 
-  constructor() {}
+  constructor(
+    public blockDataHelper: BlockDataHelperService,
+    private headerConfig: HeaderOperatorsDataService
+  ) {}
+
+  ngOnInit() {
+    this.setConfig();
+  }
 
   ngOnDestroy(): void {
     this.destory$.next({});
@@ -64,5 +80,25 @@ export class ConcatComponent implements OnDestroy {
       }),
       delay(deley)
     );
+  }
+
+  setConfig() {
+    this.config = this.headerConfig.getConfiguration(
+      OperatorRouterNames.CONCAT
+    );
+    this.config.buttons = [
+      {
+        name: 'Start',
+        callback: () => {
+          this.useConcat();
+        },
+      },
+      {
+        name: 'Reset',
+        callback: () => {
+          this.reset();
+        },
+      },
+    ];
   }
 }
