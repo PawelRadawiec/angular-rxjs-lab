@@ -13,6 +13,7 @@
     {{ block?.status }}
   </p>
   <p>Deley: {{ block?.deley / 1000 }} s</p>
+  <p *ngIf="block?.status === 'PENDING'">Counter: {{ counter / 1000 }} s</p>
   <p *ngIf="block?.startAt as startAt">
     Start at: {{ startAt | date: "mediumTime" }}
   </p>

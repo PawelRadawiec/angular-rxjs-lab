@@ -22,8 +22,26 @@ export interface BlockData {
 })
 export class BlockComponent implements OnInit {
   @Input() block: BlockData;
+  
+  counter: number;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.countdown();
+  }
+
+  countdown() {
+    if (this.block.status !== BlockStatus.PENDING) {
+      return;
+    }
+    this.counter = this.block.deley;
+    const interval = setInterval(() => {
+      if (this.counter <= 0) {
+        clearInterval(interval);
+      } else {
+        this.counter -= 1_000;
+      }
+    }, 1_000);
+  }
 }
