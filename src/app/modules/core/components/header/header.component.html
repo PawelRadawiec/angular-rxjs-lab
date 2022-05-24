@@ -8,18 +8,18 @@
   </button>
   <span>Rxjs Operators Lab</span>
 
-  <button mat-button [matMenuTriggerFor]="afterMenu">Combination</button>
-  <mat-menu #afterMenu="matMenu" xPosition="after">
-    <button mat-menu-item [routerLink]="'/operators/concat'">Concat</button>
-    <button mat-menu-item [routerLink]="'/operators/combine-latest'">
-      Combine latest
-    </button>
-    <button mat-menu-item [routerLink]="'/operators/fork-join'">
-      Fork join
-    </button>
-    <button mat-menu-item [routerLink]="'/operators/with-latest-from'">
-      With latest from
-    </button>
-    <button mat-menu-item [routerLink]="'/operators/zip'">Zip</button>
+  <button mat-button [matMenuTriggerFor]="combinationMenu">Combination</button>
+  <mat-menu #combinationMenu="matMenu" xPosition="after">
+    <ng-container *ngFor="let item of combinations">
+      <button mat-menu-item [routerLink]="item?.link">{{ item?.name }}</button>
+    </ng-container>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="transformationMenu">
+    Transformation
+  </button>
+   <mat-menu #transformationMenu="matMenu" xPosition="after">
+    <ng-container *ngFor="let item of transformations">
+      <button mat-menu-item [routerLink]="item?.link">{{ item?.name }}</button>
+    </ng-container>
   </mat-menu>
 </mat-toolbar>

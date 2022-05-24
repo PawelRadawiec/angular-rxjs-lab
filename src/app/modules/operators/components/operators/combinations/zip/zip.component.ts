@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BlockDataHelperService } from '../../services/block-data-helper.service';
+import { BlockDataHelperService } from 'src/app/modules/operators/services/block-data-helper.service';
 import {
   HeaderOperatorsDataService,
   OperatorRouterNames,
-} from '../../services/header-operators-data.service';
-import { OperatorsHeaderConfig } from '../operators-header/operators-header.component';
+} from 'src/app/modules/operators/services/header-operators-data.service';
+import { OperatorsHeaderConfig } from '../../../operators-header/operators-header.component';
 import { OperatorsConfig } from '../with-latest-from/with-latest-from.component';
 
 @Component({

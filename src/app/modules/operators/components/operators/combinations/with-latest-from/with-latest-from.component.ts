@@ -1,20 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  from,
-  map,
-  merge,
-  Subject,
-  takeUntil,
-  tap,
-  withLatestFrom,
-} from 'rxjs';
-import { BlockData } from 'src/app/modules/shared/components/block/block.component';
-import { BlockDataHelperService } from '../../services/block-data-helper.service';
+import { Subject } from 'rxjs';
+import { BlockDataHelperService } from '../../../../services/block-data-helper.service';
 import {
   HeaderOperatorsDataService,
   OperatorRouterNames,
-} from '../../services/header-operators-data.service';
-import { OperatorsHeaderConfig } from '../operators-header/operators-header.component';
+} from '../../../../services/header-operators-data.service';
+import { OperatorsHeaderConfig } from '../../../operators-header/operators-header.component';
 
 export interface OperatorsConfig {
   config: OperatorsHeaderConfig;
