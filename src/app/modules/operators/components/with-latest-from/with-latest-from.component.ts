@@ -33,13 +33,11 @@ export class WithLatestFromComponent
 {
   config: OperatorsHeaderConfig;
   showHistory = false;
-  resultsHistory: BlockData[][] = [];
-  results: BlockData[] = [];
 
   private _destroy$ = new Subject<boolean>();
 
   constructor(
-    public productService: BlockDataHelperService,
+    public blockDataHelper: BlockDataHelperService,
     private configService: HeaderOperatorsDataService
   ) {}
 
@@ -53,15 +51,7 @@ export class WithLatestFromComponent
   }
 
   start() {
-    const firstSource = this.productService.firstProductObservable();
-    const secondSource = this.productService.secondProductObservable();
-    firstSource
-      .pipe(withLatestFrom(secondSource), takeUntil(this._destroy$))
-      .subscribe((products) => {
-        this.productService.pendingResults = [];
-        this.results = products;
-        this.resultsHistory.push(products);
-      });
+    this.blockDataHelper.startWithLatestFrom();
   }
 
   setConfig() {

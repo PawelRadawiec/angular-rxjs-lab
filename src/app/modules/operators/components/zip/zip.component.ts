@@ -1,6 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil, zip } from 'rxjs';
-import { BlockData } from 'src/app/modules/shared/components/block/block.component';
+import { Component, OnInit } from '@angular/core';
 import { BlockDataHelperService } from '../../services/block-data-helper.service';
 import {
   HeaderOperatorsDataService,

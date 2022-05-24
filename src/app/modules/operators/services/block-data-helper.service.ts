@@ -1,5 +1,15 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject, tap, delay, map, take, takeUntil, zip } from 'rxjs';
+import {
+  Subject,
+  tap,
+  delay,
+  map,
+  take,
+  takeUntil,
+  zip,
+  withLatestFrom,
+  forkJoin,
+} from 'rxjs';
 import {
   BlockData,
   BlockStatus,
@@ -105,6 +115,37 @@ export class BlockDataHelperService implements OnDestroy {
         this.results = values;
         this.resultsHistory.push(values);
         values.forEach((block) => {
+          this.pendingResults = this.pendingResults.filter(
+            (item) => item.id !== block.id
+          );
+        });
+      });
+  }
+
+  startWithLatestFrom() {
+    const firstSource = this.firstProductObservable();
+    const secondSource = this.secondProductObservable();
+    firstSource
+      .pipe(withLatestFrom(secondSource), takeUntil(this._destroy$))
+      .subscribe((products) => {
+        this.pendingResults = [];
+        this.results = products;
+        this.resultsHistory.push(products);
+      });
+  }
+
+  startForkJoin() {
+    forkJoin([
+      this.firstProductObservable(1),
+      this.secondProductObservable(1),
+      this.thirdProductObservable(1),
+    ])
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((products) => {
+        this.results = products;
+        this.resultsHistory.push(products);
+
+        products.forEach((block) => {
           this.pendingResults = this.pendingResults.filter(
             (item) => item.id !== block.id
           );

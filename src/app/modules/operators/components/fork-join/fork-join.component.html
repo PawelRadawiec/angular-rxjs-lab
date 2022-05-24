@@ -9,16 +9,9 @@
     ></app-block-list>
 
     <app-block-list
-      *ngIf="!showHistory; else history"
       [title]="'Executed products'"
       [horizontal]="false"
-      [blocks]="results"
+      [blocks]="blockDataHelper?.results"
     ></app-block-list>
-
-    <ng-template #history>
-      <ng-container *ngFor="let blocks of resultsHistory">
-        <app-block-list [horizontal]="false" [blocks]="blocks"></app-block-list>
-      </ng-container>
-    </ng-template>
   </div>
 </div>
