@@ -9,6 +9,7 @@ import {
   zip,
   withLatestFrom,
   forkJoin,
+  concat,
 } from 'rxjs';
 import {
   BlockData,
@@ -150,6 +151,21 @@ export class BlockDataHelperService implements OnDestroy {
             (item) => item.id !== block.id
           );
         });
+      });
+  }
+
+  startConcat() {
+    concat(
+      this.firstProductObservable(1),
+      this.secondProductObservable(1),
+      this.thirdProductObservable(1)
+    )
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((block) => {
+        this.results.push(block);
+        this.pendingResults = this.pendingResults.filter(
+          (item) => item.id !== block.id
+        );
       });
   }
 }

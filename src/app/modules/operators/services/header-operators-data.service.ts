@@ -83,7 +83,26 @@ export class HeaderOperatorsDataService {
     return {
       info: 'You can think of concat like a line at a ATM, the next transaction (subscription) cannot start until the previous completes!',
       title: 'concat',
-      buttons: [],
+      buttons: [
+        {
+          name: 'Product 1',
+          callback: () => {
+            this.productService.emitFirst();
+          },
+        },
+        {
+          name: 'Product 2',
+          callback: () => {
+            this.productService.emitSecond();
+          },
+        },
+        {
+          name: 'Product 3',
+          callback: () => {
+            this.productService.emitThird();
+          },
+        },
+      ],
     };
   }
 

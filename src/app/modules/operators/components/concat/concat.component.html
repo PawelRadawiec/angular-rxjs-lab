@@ -3,11 +3,11 @@
 
   <div class="content">
     <app-block-list
-      [blocks]="pendingBlocks"
+      [blocks]="blockDataHelper?.pendingResults"
       [title]="'Pending orders'"
     ></app-block-list>
     <app-block-list
-      [blocks]="executedBlocks"
+      [blocks]="blockDataHelper?.results"
       [title]="'Executed orders'"
     ></app-block-list>
   </div>
