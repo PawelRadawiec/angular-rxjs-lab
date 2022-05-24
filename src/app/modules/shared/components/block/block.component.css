@@ -12,9 +12,12 @@
 }
 
 .header {
-  border-bottom: 4px solid #748ffc;
   align-self: stretch;
   margin-bottom: 12px;
+}
+
+.header--border {
+  border-bottom: 4px solid #748ffc;
 }
 
 .header__title {

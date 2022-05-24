@@ -10,6 +10,7 @@ import {
   withLatestFrom,
   forkJoin,
   concat,
+  of,
 } from 'rxjs';
 import {
   BlockData,
@@ -50,7 +51,11 @@ export class BlockDataHelperService implements OnDestroy {
   }
 
   changeBlockData(block: BlockData) {
-    return { ...block, status: BlockStatus.EXECUTED, endAt: new Date() };
+    return {
+      ...block,
+      status: BlockStatus.EXECUTED,
+      endAt: new Date(),
+    };
   }
 
   commonBlockData(): BlockData {
@@ -58,6 +63,7 @@ export class BlockDataHelperService implements OnDestroy {
       id: uuid.v4(),
       startAt: new Date(),
       status: BlockStatus.PENDING,
+      loading: true,
     };
   }
 
@@ -97,6 +103,7 @@ export class BlockDataHelperService implements OnDestroy {
       delay(2_000),
       map((block) => {
         this._firstLoading.next(false);
+        block.loading = false;
         return this.changeBlockData(block);
       }),
       setTake ? take(setTake) : tap()
@@ -111,6 +118,7 @@ export class BlockDataHelperService implements OnDestroy {
       delay(3_000),
       map((block) => {
         this._secondLoading.next(false);
+        block.loading = false;
         return this.changeBlockData(block);
       }),
       setTake ? take(setTake) : tap()
@@ -125,6 +133,7 @@ export class BlockDataHelperService implements OnDestroy {
       delay(5_000),
       map((block) => {
         this._thirdLoading.next(false);
+        block.loading = false;
         return this.changeBlockData(block);
       }),
       setTake ? take(setTake) : tap()

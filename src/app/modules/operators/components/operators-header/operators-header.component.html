@@ -8,7 +8,7 @@
       <app-button
         [title]="button?.name"
         [loading]="button?.loading | async"
-        (click)="handleClick(button)"
+        (clickEvent$)="handleClick(button)"
       ></app-button>
     </ng-container>
   </div>

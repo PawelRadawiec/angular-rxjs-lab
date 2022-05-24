@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() loading = false;
   @Input() title: string;
-  @Output() click$ = new EventEmitter();
+  @Output() clickEvent$ = new EventEmitter();
 
   constructor() {}
 
@@ -16,7 +16,7 @@ export class ButtonComponent implements OnInit {
 
   click() {
     if (!this.loading) {
-      this.click$.emit();
+      this.clickEvent$.emit();
     }
   }
 }

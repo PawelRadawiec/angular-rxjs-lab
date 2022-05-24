@@ -8,6 +8,7 @@ import { BlockListComponent } from './components/block-list/block-list.component
 import { InfoBoxComponent } from './components/info-box/info-box.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ButtonComponent } from './components/button/button.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ButtonComponent } from './components/button/button.component';
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
   ],
   exports: [
     BlockComponent,
@@ -31,6 +33,7 @@ import { ButtonComponent } from './components/button/button.component';
     BlockListComponent,
     InfoBoxComponent,
     ButtonComponent,
+    MatProgressBarModule,
   ],
 })
 export class SharedModule {}

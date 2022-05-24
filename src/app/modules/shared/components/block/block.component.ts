@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export enum BlockStatus {
   PENDING = 'PENDING',
@@ -13,6 +14,7 @@ export interface BlockData {
   deley?: number;
   startAt?: any;
   endAt?: any;
+  loading?: boolean;
 }
 
 @Component({
@@ -22,7 +24,7 @@ export interface BlockData {
 })
 export class BlockComponent implements OnInit {
   @Input() block: BlockData;
-  
+
   counter: number;
 
   constructor() {}
