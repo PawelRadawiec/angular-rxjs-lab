@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface OperatorsHeaderButton {
   name: string;
   callback: any;
+  loading?: Observable<boolean>;
 }
 
 export interface OperatorsHeaderConfig {

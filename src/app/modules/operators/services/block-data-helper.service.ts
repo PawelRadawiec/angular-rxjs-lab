@@ -27,6 +27,14 @@ export class BlockDataHelperService implements OnDestroy {
   private _thirdProduct = new Subject<BlockData>();
   private _destroy$ = new Subject<boolean>();
 
+  private _firstLoading = new Subject<boolean>();
+  private _secondLoading = new Subject<boolean>();
+  private _thirdLoading = new Subject<boolean>();
+
+  firstLoading$ = this._firstLoading.asObservable();
+  secondLoading$ = this._secondLoading.asObservable();
+  thirdLoading$ = this._thirdLoading.asObservable();
+
   results: BlockData[] = [];
   resultsHistory: BlockData[][] = [];
   pendingResults: BlockData[] = [];
@@ -82,25 +90,43 @@ export class BlockDataHelperService implements OnDestroy {
 
   firstProductObservable(setTake?: number) {
     return this._firstProduct.asObservable().pipe(
-      tap((block) => this.appendPendingResults(block)),
+      tap((block) => {
+        this._firstLoading.next(true);
+        this.appendPendingResults(block);
+      }),
       delay(2_000),
-      map((block) => this.changeBlockData(block)),
+      map((block) => {
+        this._firstLoading.next(false);
+        return this.changeBlockData(block);
+      }),
       setTake ? take(setTake) : tap()
     );
   }
   secondProductObservable(setTake?: number) {
     return this._secondProduct.asObservable().pipe(
-      tap((block) => this.appendPendingResults(block)),
+      tap((block) => {
+        this._secondLoading.next(true);
+        this.appendPendingResults(block);
+      }),
       delay(3_000),
-      map((block) => this.changeBlockData(block)),
+      map((block) => {
+        this._secondLoading.next(false);
+        return this.changeBlockData(block);
+      }),
       setTake ? take(setTake) : tap()
     );
   }
   thirdProductObservable(setTake?: number) {
     return this._thirdProduct.asObservable().pipe(
-      tap((block) => this.appendPendingResults(block)),
+      tap((block) => {
+        this._thirdLoading.next(true);
+        this.appendPendingResults(block);
+      }),
       delay(5_000),
-      map((block) => this.changeBlockData(block)),
+      map((block) => {
+        this._thirdLoading.next(false);
+        return this.changeBlockData(block);
+      }),
       setTake ? take(setTake) : tap()
     );
   }

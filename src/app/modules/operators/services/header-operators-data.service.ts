@@ -12,7 +12,7 @@ export enum OperatorRouterNames {
 
 @Injectable()
 export class HeaderOperatorsDataService {
-  constructor(private productService: BlockDataHelperService) {}
+  constructor(private blockDataHelper: BlockDataHelperService) {}
 
   getConfiguration(name: OperatorRouterNames) {
     switch (name) {
@@ -39,13 +39,13 @@ export class HeaderOperatorsDataService {
         {
           name: 'Source',
           callback: () => {
-            this.productService.emitFirst();
+            this.blockDataHelper.emitFirst();
           },
         },
         {
           name: 'Inner',
           callback: () => {
-            this.productService.emitSecond();
+            this.blockDataHelper.emitSecond();
           },
         },
       ],
@@ -60,20 +60,23 @@ export class HeaderOperatorsDataService {
         {
           name: 'Product 1',
           callback: () => {
-            this.productService.emitFirst();
+            this.blockDataHelper.emitFirst();
           },
+          loading: this.blockDataHelper.firstLoading$,
         },
         {
           name: 'Product 2',
           callback: () => {
-            this.productService.emitSecond();
+            this.blockDataHelper.emitSecond();
           },
+          loading: this.blockDataHelper.secondLoading$,
         },
         {
           name: 'Product 3',
           callback: () => {
-            this.productService.emitThird();
+            this.blockDataHelper.emitThird();
           },
+          loading: this.blockDataHelper.thirdLoading$,
         },
       ],
     };
@@ -87,20 +90,23 @@ export class HeaderOperatorsDataService {
         {
           name: 'Product 1',
           callback: () => {
-            this.productService.emitFirst();
+            this.blockDataHelper.emitFirst();
           },
+          loading: this.blockDataHelper.firstLoading$,
         },
         {
           name: 'Product 2',
           callback: () => {
-            this.productService.emitSecond();
+            this.blockDataHelper.emitSecond();
           },
+          loading: this.blockDataHelper.secondLoading$,
         },
         {
           name: 'Product 3',
           callback: () => {
-            this.productService.emitThird();
+            this.blockDataHelper.emitThird();
           },
+          loading: this.blockDataHelper.thirdLoading$,
         },
       ],
     };
@@ -114,20 +120,23 @@ export class HeaderOperatorsDataService {
         {
           name: 'Product 1',
           callback: () => {
-            this.productService.emitFirst();
+            this.blockDataHelper.emitFirst();
           },
+          loading: this.blockDataHelper.firstLoading$,
         },
         {
           name: 'Product 2',
           callback: () => {
-            this.productService.emitSecond();
+            this.blockDataHelper.emitSecond();
           },
+          loading: this.blockDataHelper.secondLoading$,
         },
         {
           name: 'Product 3',
           callback: () => {
-            this.productService.emitThird();
+            this.blockDataHelper.emitThird();
           },
+          loading: this.blockDataHelper.thirdLoading$,
         },
       ],
     };
@@ -141,20 +150,23 @@ export class HeaderOperatorsDataService {
         {
           name: 'Product 1',
           callback: () => {
-            this.productService.emitFirst();
+            this.blockDataHelper.emitFirst();
           },
+          loading: this.blockDataHelper.firstLoading$,
         },
         {
           name: 'Product 2',
           callback: () => {
-            this.productService.emitSecond();
+            this.blockDataHelper.emitSecond();
           },
+          loading: this.blockDataHelper.secondLoading$,
         },
         {
           name: 'Product 3',
           callback: () => {
-            this.productService.emitThird();
+            this.blockDataHelper.emitThird();
           },
+          loading: this.blockDataHelper.thirdLoading$,
         },
       ],
     };

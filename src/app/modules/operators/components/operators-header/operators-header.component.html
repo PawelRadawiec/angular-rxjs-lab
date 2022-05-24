@@ -5,9 +5,11 @@
 
   <div class="buttons">
     <ng-container *ngFor="let button of config?.buttons">
-      <button mat-flat-button color="primary" (click)="handleClick(button)">
-        {{ button.name }}
-      </button>
+      <app-button
+        [title]="button?.name"
+        [loading]="button?.loading | async"
+        (click)="handleClick(button)"
+      ></app-button>
     </ng-container>
   </div>
 </div>

@@ -1,0 +1,6 @@
+<button mat-flat-button color="primary" (click)="click()" [disabled]="loading">
+  <mat-spinner [diameter]="36" *ngIf="loading; else titleTemp"></mat-spinner>
+  <ng-template #titleTemp>
+    <span>{{ title }}</span>
+  </ng-template>
+</button>
